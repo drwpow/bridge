@@ -1,0 +1,25 @@
+{
+  "name": "babel-preset-bridge",
+  "version": "0.0.1-alpha.0",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dangodev/bridge.git"
+  },
+  "author": "dangodev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dangodev/bridge/issues"
+  },
+  "homepage": "https://github.com/dangodev/bridge#readme",
+  "description": "",
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.0.0-beta.56"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "bridge",
+  "version": "0.0.1-alpha.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dangodev/bridge.git"
+  },
+  "author": "dangodev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dangodev/bridge/issues"
+  },
+  "homepage": "https://github.com/dangodev/bridge#readme",
+  "description": "",
+  "dependencies": {
+    "@babel/parser": "^7.0.0-rc.1",
+    "@babel/traverse": "^7.0.0-rc.1",
+    "@babel/types": "^7.0.0-rc.1",
+    "chalk": "^2.4.1",
+    "command-line-args": "^5.0.2",
+    "find-babel-config": "^1.1.0",
+    "glob": "^7.1.2"
+  }
+}
