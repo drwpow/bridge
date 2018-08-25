@@ -1,0 +1,2 @@
+# Include fake Node Modules here for the purpose of testing
+!node_modules

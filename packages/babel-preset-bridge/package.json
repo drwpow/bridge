@@ -20,6 +20,7 @@
   "homepage": "https://github.com/dangodev/bridge#readme",
   "description": "",
   "dependencies": {
-    "@babel/helper-plugin-utils": "^7.0.0-beta.56"
+    "@babel/helper-plugin-utils": "^7.0.0",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3"
   }
 }

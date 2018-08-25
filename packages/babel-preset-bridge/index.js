@@ -1,10 +1,13 @@
 const { declare } = require('@babel/helper-plugin-utils');
 const bridge = require('../babel-plugin-bridge');
 
-module.exports = declare((api, { ignore }) => {
+module.exports = declare((api, { aliases, ignore }) => {
   api.assertVersion(7);
 
   return {
-    plugins: [[bridge, { ignore }]],
+    plugins: [
+      ['transform-inline-environment-variables'],
+      [bridge, { aliases, ignore }],
+    ],
   };
 });

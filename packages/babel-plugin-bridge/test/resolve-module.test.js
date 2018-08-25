@@ -1,4 +1,4 @@
-import resolve from '../resolve-module.js';
+import resolve from '../dist/lib/resolve-module.js';
 
 describe('resolve-module', () => {
   it('returns undefined when no module exists', () => {

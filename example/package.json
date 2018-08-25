@@ -5,12 +5,12 @@
     "start": "serve end"
   },
   "dependencies": {
-    "@babel/cli": "^7.0.0-beta.56",
-    "@babel/core": "^7.0.0-beta.56",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
-    "@babel/plugin-transform-react-jsx": "^7.0.0-beta.56",
-    "@babel/preset-react": "^7.0.0-rc.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@reach/observe-rect": "^1.0.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",

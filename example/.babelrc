@@ -1,10 +1,37 @@
 {
-  "presets": [
-    ["../packages/babel-preset-bridge", { "rootDir": "./src" }],
-    "@babel/react"
-  ],
+  "presets": ["@babel/react"],
   "plugins": [
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread"
-  ]
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "../packages/babel-preset-bridge",
+          {
+            "aliases": {
+              "react": "react/cjs/react.development.js",
+              "react-dom": "react-dom/cjs/react-dom.development.js",
+              "prop-types": "prop-types/factoryWithThrowingShims.js"
+            }
+          }
+        ]
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "../packages/babel-preset-bridge",
+          {
+            "aliases": {
+              "react": "react/cjs/react.production.min.js",
+              "react-dom": "react-dom/cjs/react-dom.production.min.js",
+              "prop-types": "prop-types/factoryWithThrowingShims.js"
+            }
+          }
+        ]
+      ]
+    }
+  }
 }
