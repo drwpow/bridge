@@ -1,87 +1,63 @@
-import { writeFileSync } from 'fs';
-import { dirname, relative, resolve } from 'path';
+import { dirname, relative, resolve, sep } from 'path';
 import { declare } from '@babel/helper-plugin-utils';
 import { importDeclaration, stringLiteral } from '@babel/types';
-import minimatch from 'minimatch';
-import prettier from 'prettier';
-import { getOutDir, getSrcDir } from './lib/babel-cli-params';
-import resolveModule from './lib/resolve-module';
-import treeShake from './lib/tree-shake';
+import resolveModule, { searchUpwards } from './lib/resolve';
+import { getSrcDir } from './lib/babel-cli-params';
+import copy from './lib/copy';
+import forwardSlash from './lib/forward-slash';
 
-const dist = getOutDir();
-const src = getSrcDir();
-
-const stats = {
-  dist,
-  env: process.env.NODE_ENV || 'development',
-  files: {},
-  modules: [],
-};
-
-const addModuleSrc = (loc: string) => {
-  const modulesDir = loc.replace(/node_modules(\/|\\).*$/, `node_modules`);
-  if (stats.modules.indexOf(modulesDir) === -1) stats.modules.push(modulesDir);
-};
-
-export default declare((api, { aliases = {}, ignore = [] }) => {
+export default declare((api, options: { sourceMaps: boolean }) => {
+  const { sourceMaps = false } = options;
   api.assertVersion(7);
 
   return {
     visitor: {
-      ImportDeclaration(
-        path: {
-          node: { source: { value: string }; specifiers: any };
-          replaceWith: any;
-        },
-        state: { file: { opts: { filename: string } } }
-      ) {
-        const { filename } = state.file.opts;
+      ImportDeclaration(path, hub) {
+        const token = path.node.source.value;
 
-        // 1. If ignore pattern is matched, skip
-        if (ignore.some(pattern => minimatch(filename, pattern))) return;
+        if (token[0] === '.') return;
 
-        // 2. Ignore local paths (it’s either been resolved, or will be hit with Babel later)
-        if (path.node.source.value[0] === '.') return;
-
-        // 3. Identify file by path relative to current working directory (cwd)
-        const id = relative(src, filename);
-        if (!stats.files[id]) stats.files[id] = [];
-
-        // 4. Resolve module
-        const alias = aliases[path.node.source.value] || path.node.source.value;
-        const resolvedModule = resolveModule(alias, {
-          basedir: dirname(filename),
+        let baseDir = dirname(hub.file.opts.filename);
+        let foundModule = resolveModule({
+          baseDir,
+          filename: token,
+          nodeModule: true,
         });
 
-        // 5. Add this module folder to stats
-        addModuleSrc(resolvedModule.src);
+        if (!foundModule) return;
 
-        // 6. Add dependency to file, if it hasn’t been added already
-        const existingDep = stats.files[id].find(
-          ({ name, version }) =>
-            name === resolvedModule.name && version === resolvedModule.version
-        );
-        if (!existingDep) stats.files[id].push(resolvedModule);
+        copy(foundModule, { sourceMaps });
 
-        // 7. Transform this node to refer to new file
-        let newPath = relative(dirname(id), resolvedModule.src);
-        if (newPath[0] !== '.') newPath = `./${newPath}`;
+        // If node_modules are above the src dir (common for many apps),
+        // let’s pretend they’re in the root for when they get copied to output
+        const isAboveSrcDir =
+          dirname(foundModule).indexOf(resolve(__dirname, getSrcDir())) === -1;
+        if (isAboveSrcDir) {
+          const modules = searchUpwards({
+            baseDir: dirname(foundModule),
+            filename: 'node_modules',
+            isDir: true,
+          });
+
+          if (!modules) return;
+          const src = relative(dirname(modules), getSrcDir());
+          foundModule = foundModule.replace(
+            'node_modules',
+            `${src}${sep}node_modules`
+          );
+        }
+
+        let relativePath = relative(baseDir, foundModule);
+        if (relativePath[0] !== '.') relativePath = `.${sep}${relativePath}`;
+
         path.replaceWith(
-          importDeclaration(path.node.specifiers, stringLiteral(newPath))
+          importDeclaration(
+            path.node.specifiers,
+            stringLiteral(forwardSlash(relativePath))
+          )
         );
       },
     },
-    post() {
-      writeFileSync(
-        resolve(dist, 'bridge-stats.json'),
-        prettier.format(JSON.stringify(stats), { parser: 'json' })
-      );
-    },
-
-    // TODO:
-    // 1. Copy tree to dist/
-    // 2. Update require -> import
-    // 3. Update module.exports = export
-    // 4. Update paths within node_modules
+    post() {},
   };
 });

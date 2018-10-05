@@ -1,11 +1,10 @@
 {
   "name": "babel-plugin-bridge",
   "version": "0.0.1-alpha.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "tsc -w",
-    "test": "jest"
+    "start": "tsc -w"
   },
   "engines": {
     "node": ">= 8.0.0"
@@ -22,26 +21,23 @@
   "homepage": "https://github.com/dangodev/bridge#readme",
   "description": "",
   "dependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.1.2",
     "@babel/helper-plugin-utils": "^7.0.0",
-    "@babel/parser": "^7.0.0",
+    "@babel/parser": "^7.1.2",
     "@babel/register": "^7.0.0",
-    "@babel/traverse": "^7.0.0",
-    "@babel/types": "^7.0.0",
+    "@babel/traverse": "^7.1.0",
+    "@babel/types": "^7.1.2",
     "chalk": "^2.4.1",
     "fs-extra": "^7.0.0",
-    "minimatch": "^3.0.4",
-    "pkg-up": "^2.0.0",
-    "prettier": "^1.14.2",
-    "resolve": "^1.8.1"
+    "prettier": "^1.14.3"
   },
   "devDependencies": {
     "@types/babel__parser": "^7.0.0",
     "@types/babel__traverse": "^7.0.0",
-    "@types/minimatch": "^3.0.3",
-    "@types/node": "^10.9.4",
+    "@types/chalk": "^2.2.0",
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.11.4",
     "@types/prettier": "^1.13.2",
-    "@types/resolve": "0.0.8",
-    "typescript": "^3.0.3"
+    "typescript": "^3.1.1"
   }
 }

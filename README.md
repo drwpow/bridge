@@ -2,6 +2,8 @@
 
 A bundler that bridges the gap to browser-optimized JavaScript bundling.
 
+**This is still in development, and isn’t ready for use yet.**
+
 ### Philosophy
 
 Code splitting is a hard problem with bundling that only seems to be getting
