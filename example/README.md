@@ -2,7 +2,8 @@
 
 ```
 npm i
-npm run start
+npm run build
 ```
 
-Viewable at `localhost:3000`.
+Inspect `app.js`, `components/ScrollAgent.js`, and `node_modules` to see that
+all have been transformed to use relative imports.

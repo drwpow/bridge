@@ -1,5 +1,6 @@
-import * as React from 'react';
+import * as React from 'react/cjs/react.development';
 import * as ReactDOM from 'react-dom';
+import { ApolloClient } from 'apollo-client';
 
 import ScrollAgent from './components/ScrollAgent';
 

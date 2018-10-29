@@ -1,21 +1,18 @@
 {
   "scripts": {
     "build": "babel src -d dist",
-    "prestart": "npm run build",
-    "start": "serve end"
+    "prestart": "npm run build"
   },
   "dependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/generator": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-transform-react-jsx": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@reach/observe-rect": "^1.0.3",
+    "apollo-client": "^2.4.4",
     "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "serve": "^9.6.0"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   }
 }

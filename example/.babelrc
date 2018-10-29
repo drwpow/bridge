@@ -1,5 +1,15 @@
 {
-  "presets": ["@babel/react", "../packages/babel-preset-bridge"],
+  "presets": [
+    "@babel/react",
+    [
+      "../packages/babel-preset-bridge", {
+        "alias": {
+          "react-dom": "react-dom/umd/react-dom.development.js"
+        },
+        "sourceMaps": true
+      }
+    ]
+  ],
   "plugins": [
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread"

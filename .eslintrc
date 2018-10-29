@@ -1,4 +1,7 @@
 {
   "parser": "typescript-eslint-parser",
-  "extends": ["typescript", "typescript/prettier", "prettier"]
+  "extends": ["typescript", "typescript/prettier", "prettier"],
+  "rules": {
+    "curly": "error"
+  }
 }

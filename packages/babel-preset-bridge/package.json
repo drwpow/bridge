@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-bridge",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1",
   "main": "index.js",
   "engines": {
     "node": ">= 8.0.0"
@@ -18,6 +18,6 @@
   "description": "",
   "dependencies": {
     "@babel/helper-plugin-utils": "^7.0.0",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.3"
+    "babel-plugin-bridge": "^0.0.1"
   }
 }
