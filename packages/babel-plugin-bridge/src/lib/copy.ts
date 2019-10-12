@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, statSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, relative, sep } from 'path';
 import { copySync, mkdirpSync } from 'fs-extra';
 import glob from 'glob';

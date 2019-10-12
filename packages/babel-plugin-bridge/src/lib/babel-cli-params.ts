@@ -1,9 +1,13 @@
 export const getOutDir = (args: string[] = process.argv) => {
   const dirIndex = args.findIndex(arg => arg === '--out-dir' || arg === '-d');
-  if (dirIndex !== -1) return args[dirIndex + 1];
+  if (dirIndex !== -1) {
+    return args[dirIndex + 1];
+  }
 
   const fileIndex = args.findIndex(arg => arg === '--out-file' || arg === '-o');
-  if (fileIndex !== -1) return args[fileIndex + 1].replace(/[^/]*$/, '');
+  if (fileIndex !== -1) {
+    return args[fileIndex + 1].replace(/[^/]*$/, '');
+  }
   return undefined;
 };
 

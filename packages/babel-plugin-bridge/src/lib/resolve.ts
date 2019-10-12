@@ -17,7 +17,9 @@ export const testPath = (filename: string) => {
   }
 
   const withExtension = `${filename}.js`;
-  if (existsSync(withExtension)) return withExtension;
+  if (existsSync(withExtension)) {
+    return withExtension;
+  }
 
   return false;
 };
