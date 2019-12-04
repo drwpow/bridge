@@ -1,3 +1,5 @@
+_⚠️ Good news! This project has been abandoned in favor of [pikapkg/web](https://github.com/pikapkg/web). Though I didn’t start pikapkg/web, I helped contribute all my ideas for Bridge there. So Bridge lives on, in a sense (only better, and working)_
+
 # 🌉 Bridge
 
 A bundler that bridges the gap to browser-optimized JavaScript bundling with
