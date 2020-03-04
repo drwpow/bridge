@@ -1,4 +1,4 @@
-_⚠️ Good news! This project has been abandoned in favor of [pikapkg/web](https://github.com/pikapkg/web). Though I didn’t start pikapkg/web, I helped contribute all my ideas for Bridge there. So Bridge lives on, in a sense (only better, and working)_
+_⚠️ Good news! This project has been abandoned in favor of [Snowpack](https://github.com/pikapkg/snowpack). Everything this project sought to accomplish (and more) now lives on in `snowpack --include '*.js'`. [Check it out](https://github.com/pikapkg/snowpack)_
 
 # 🌉 Bridge
 
